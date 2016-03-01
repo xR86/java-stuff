@@ -1,0 +1,1 @@
+start cmd.exe /k "cd /d E:\PROG\CRIT\20-PAjava\"
