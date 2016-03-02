@@ -28,13 +28,17 @@ public class Lab12 {
         
         
     char[][][] patrat = new char[n][n][2];
+    char[] latin = new char[n]; //tabelul propriu zis de caractere latine
+    char[] greek = new char[n]; //tabelul propriu zis de caractere grecesti
+    
+    
     
        if (args.length<1) //cazul in care n-avem parametrii--> populam cu latine/grecesti
        {
            for (int i=0;i<n;i++) //introducem primele n litere din alfabetele latin/grecesc
             {
-            patrat[0][i][0]=(char)('a'+i);
-            patrat[0][i][1]=(char)('\u03B1'+i);
+                latin[i]=(char)('a'+i);
+                greek[i]=(char)('\u03B1'+i);
             }
        }
     
@@ -43,32 +47,44 @@ public class Lab12 {
                             //atunci populam cu argumentele din parametrii
             if (args.length != n*2+1)
             {
-            System.out.println("Not the right nb of arguments!");
-            System.exit(-1);
+                System.out.println("Not the right nb of arguments!");
+                System.exit(-1);
             }
-      
-     
-       
-       
-       
+
             for (int i=0;i<n;i++) //introducem primele n litere din alfabetele latin/grecesc
             {
-            patrat[0][i][0]=args[1+i].charAt(0);
-            patrat[0][i][1]=args[n+1+i].charAt(0);
+                latin[i]=args[1+i].charAt(0);
+                greek[i]=args[n+1+i].charAt(0);
             }
         }
         else if (args.length==1)  //daca n-ul este dat dar nu si cu ce populam
         {                         //atunci
             for (int i=0;i<n;i++) //introducem primele n litere din alfabetele latin/grecesc
             {
-            patrat[0][i][0]=(char)('a'+i);
-            patrat[0][i][1]=(char)('\u03B1'+i);
+                latin[i]=(char)('a'+i);
+                greek[i]=(char)('\u03B1'+i);
             }
         }
        
        
+    populare(patrat,n,latin,greek);   
        
-       for (int col=1;col<n;col++)
+       
+       
+     printare(patrat,n);  //printam matricea
+       
+       
+    }
+    
+    public static void populare (char[][][] patrat, int n, char latin[],char greek[])
+    {
+        for (int first_line=0;first_line<n;first_line++)
+        {
+            patrat[0][first_line][0]=latin[first_line];
+            patrat[0][first_line][1]=greek[first_line];
+        }
+        
+        for (int col=1;col<n;col++)
            for (int row=0;row<n;row++)
            {
                if (row+1<n)
@@ -81,16 +97,6 @@ public class Lab12 {
                else
                    patrat[col][row][1]=patrat[col-1][n-1][1];
            }
-       
-       
-     printare(patrat,n);  //printam matricea
-       
-       
-    }
-    
-    public static void populare (char[][][] patrat, int n)
-    {
-        //metoda backtracking
             
     }
     
@@ -107,5 +113,20 @@ public class Lab12 {
         System.out.print("\n"); 
        } //am printat un rand
     }
+    
+    
+    public String[] generate(int n, char[] alphabet) {
+ String[] words = new String[n];
+ for (int i = 0; i < n; i++) {
+ StringBuilder sb = new StringBuilder();
+ while (true) {
+ int pos = (int) (Math.random() * (alphabet.length + 1)) - 1;
+ if (pos < 0) break;
+ sb.append(alphabet[pos]);
+ }
+ words[i] = sb.toString();
+ }
+ return words;
+ }
 
 }
