@@ -107,20 +107,5 @@ public class Lab12 {
         System.out.print("\n"); 
        } //am printat un rand
     }
-    
-    
-    public String[] generate(int n, char[] alphabet) {
- String[] words = new String[n];
- for (int i = 0; i < n; i++) {
- StringBuilder sb = new StringBuilder();
- while (true) {
- int pos = (int) (Math.random() * (alphabet.length + 1)) - 1;
- if (pos < 0) break;
- sb.append(alphabet[pos]);
- }
- words[i] = sb.toString();
- }
- return words;
- }
 
 }
