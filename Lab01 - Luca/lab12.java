@@ -20,7 +20,7 @@ public class Lab12 {
         int n;
 
         if (args.length < 1) //n-avem parametrii --> facem un n random
-            n=(int)(Math.random() * (6-3+1) + 3); //range=3..6
+            n=(int)(Math.random() * (11-3+1) + 3); //range=3..6
                                                   //deci max-min+1
                                                   //+ pt nr de start
         else
@@ -37,7 +37,7 @@ public class Lab12 {
        {
            for (int i=0;i<n;i++) //introducem primele n litere din alfabetele latin/grecesc
             {
-                latin[i]=(char)('a'+i);
+                latin[i]=(char)('A'+i);
                 greek[i]=(char)('\u03B1'+i);
             }
        }
@@ -61,22 +61,32 @@ public class Lab12 {
         {                         //atunci
             for (int i=0;i<n;i++) //introducem primele n litere din alfabetele latin/grecesc
             {
-                latin[i]=(char)('a'+i);
+                latin[i]=(char)('A'+i);
                 greek[i]=(char)('\u03B1'+i);
             }
         }
        
-       
-    populare(patrat,n,latin,greek);   
-       
-       
-       
-     printare(patrat,n);  //printam matricea
-       
+    System.out.println("n="+n);
+    System.out.println("\n");
+    
+    GenerarePrinRotire(patrat,n,latin,greek); 
+    //rotire latine la stanga si grecesti la dreapta
+    //valabil pentru ranguri impare
+    printare(patrat,n);  //printam matricea   
+    
+    System.out.println("\n");
+    
+    GenerarePrinMOLS(patrat,n,latin,greek);
+    //Mutually Orthogonal Latin Squares
+    printare(patrat,n);
+     
+    System.out.println("\n");
+    
+    hardcodare();
        
     }
     
-    public static void populare (char[][][] patrat, int n, char latin[],char greek[])
+    public static void GenerarePrinRotire (char[][][] patrat, int n, char latin[],char greek[])
     {
         for (int first_line=0;first_line<n;first_line++)
         {
@@ -100,6 +110,16 @@ public class Lab12 {
             
     }
     
+    public static void GenerarePrinMOLS (char[][][] patrat, int n, char latin[], char greek[])
+    { //mutually orthogonal latin squares
+        for (int i=0;i<n;i++)
+            for (int j=0;j<n;j++)
+            {
+                patrat[i][j][0]=latin[(1*i+j)%n];
+                patrat[i][j][1]=greek[(2*i+j)%n];
+            }
+    }
+    
     public static void printare (char[][][] patrat, int n)
     {
        for (int i=0;i<n;i++)
@@ -114,19 +134,14 @@ public class Lab12 {
        } //am printat un rand
     }
     
-    
-    public String[] generate(int n, char[] alphabet) {
- String[] words = new String[n];
- for (int i = 0; i < n; i++) {
- StringBuilder sb = new StringBuilder();
- while (true) {
- int pos = (int) (Math.random() * (alphabet.length + 1)) - 1;
- if (pos < 0) break;
- sb.append(alphabet[pos]);
- }
- words[i] = sb.toString();
- }
- return words;
- }
-
+    public static void hardcodare()
+    //crearea patratului din exemplu
+    {
+        int marime=3;
+        char[][][] patrat=new char[3][3][2];
+        char[] latin = {'A','B','C'};
+        char[] greek = {'\u03B1','\u03B1'+2,'\u03B1'+1};
+        GenerarePrinRotire(patrat,3,latin,greek);
+        printare(patrat,3);
+    }
 }
