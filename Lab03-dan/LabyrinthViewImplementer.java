@@ -10,6 +10,8 @@ public class LabyrinthViewImplementer implements LabyrinthView{
     private static final int size = 5;
 
     public void getLabyrinth() {
+
+        //System.out.println(LabyrinthViewMatrix[0].length());
         for(int i=0; i<this.size; i++){
             for(int j=0; j<LabyrinthViewMatrix.length*2+1; j++){
                 System.out.print(LabyrinthViewMatrix[i].charAt(j));
@@ -21,12 +23,15 @@ public class LabyrinthViewImplementer implements LabyrinthView{
 
     public void setLabyrinth(LabyrinthMatrixImpl model) {
         int[][] copy = model.getLabyrinth();
+        int counter = 0;
+
         for(int i=0; i<this.size; i++){
-            LabyrinthViewMatrix[i].append(Character.toString('|'));
             for(int j=0; j<this.size; j++){
                 /*if(LabyrinthViewMatrix[i] == null){
                     LabyrinthViewMatrix[i].append(' ');
                 }*/
+                LabyrinthViewMatrix[i].insert(counter, '|');
+                counter++;
 
                 //System.out.print(LabyrinthViewMatrix[i]);
                 char temp = 'x'; //x - caz invalid
@@ -40,13 +45,15 @@ public class LabyrinthViewImplementer implements LabyrinthView{
                 } else if (copy[i][j] == 2){
                     temp = 'F';
                 }
-               // System.out.print(temp);
+                //System.out.print(temp);
                 //System.out.print(" ");
-                
-                LabyrinthViewMatrix[i].append(temp);
-               LabyrinthViewMatrix[i].append(Character.toString('|'));
-            }
 
+                LabyrinthViewMatrix[i].insert(counter, temp);
+                counter++;
+                //System.out.println(LabyrinthViewMatrix[i].charAt(counter));
+            }
+            LabyrinthViewMatrix[i].insert(counter, '|');
+            counter = 0;
         }
     }
 
@@ -57,10 +64,12 @@ public class LabyrinthViewImplementer implements LabyrinthView{
     }
 
     LabyrinthViewImplementer(){
-        LabyrinthViewMatrix = new StringBuilder[size];//(this.size*2+1)
+        LabyrinthViewMatrix = new StringBuilder[this.size];//(this.size*2+1)
 
         for (int i = 0; i < this.size; i++) {
-            LabyrinthViewMatrix[i] = new StringBuilder("");
+
+                LabyrinthViewMatrix[i] = new StringBuilder("");
+                LabyrinthViewMatrix[i].setLength(this.size*2+1);
         }
 
 

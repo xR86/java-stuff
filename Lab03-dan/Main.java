@@ -15,7 +15,12 @@ public class Main {
 
         LabyrinthViewImplementer cevaPrelucrat = new LabyrinthViewImplementer();
         cevaPrelucrat.setLabyrinth(cevaRaw);
+
+        System.out.println("");
+        System.out.println("");
         cevaPrelucrat.getLabyrinth();
+
+        LabyrinthSolverInteractive rezolva = new LabyrinthSolverInteractive();
 
     }
 }
