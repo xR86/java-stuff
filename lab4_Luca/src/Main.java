@@ -52,19 +52,13 @@ public class Main {
     public static void main(String[] args){
 /*try {*/
 
-
-
-/*
-while (true)
-    {
-        if (KEY_PRESSED) {
-            System.out.println("am apasat w");
-            break;
-        }
-    }
-*/
-        find("D:\\a muzica","acid");
-        System.out.println("Am terminat cautarea in folder si subfoldere");
+       // ls(); //listeaza foldere/fisiere
+       // list(); //listeaza numai fisiere mp3
+       // find("E:\\PROG\\CRIT\\20-PAjava\\lab4_Luca","opeth"); //cauta recursiv in folder si subfoldere in metadate
+       // play(); //play mp3-ul target
+       // info(); //afiseaza metadate
+       // cd("src"); //schimba directorul daca exista si afiseaza path-ul curent
+       // cd("srcc"); //in caz ca nu exista ramane la directorul curent
 
 
 /*
@@ -78,7 +72,7 @@ while (true)
     } //end main
 
 public static void play(){ //deschide fisierul din path cu playerul nativ
-    String path = "D:\\a muzica\\Altar\\2011 - Mantra\\09 - Invasion.mp3";
+    String path = "E:\\PROG\\CRIT\\20-PAjava\\lab4_Luca\\example.mp3";
     File fisier = new File(path);
     try {
 
@@ -102,22 +96,21 @@ public static void play(){ //deschide fisierul din path cu playerul nativ
 
 
     public static void ls(){ //printeaza toata lista de subdirectoare directe
-        String cale = new String("D:\\a muzica");
+        String cale = new String("E:\\PROG\\CRIT\\20-PAjava\\lab4_Luca");
         File folderCurent = new File(cale);
         String[] subdirectoare = folderCurent.list();
 
         System.out.println("Fisiere: ");
         for (String nume:subdirectoare)
         {
-            if (new File(cale + "\\" + nume).isDirectory())
-            {
+
                 System.out.println(nume);
-            }
+
         }
     }
 
     public static void list(){ //printeaza numa fisierele de muzica din directorul curent
-        String cale = new String("D:\\a muzica\\Baroness\\2007 - Red Album");
+        String cale = new String("E:\\PROG\\CRIT\\20-PAjava\\lab4_Luca");
         File folderCurent = new File(cale);
         String[] subdirectoare = folderCurent.list();
 
@@ -159,9 +152,10 @@ public static void play(){ //deschide fisierul din path cu playerul nativ
 
                     Matcher title = filePattern.matcher(metadata.get("title").toUpperCase());
                     Matcher artist = filePattern.matcher(metadata.get("xmpDM:artist").toUpperCase());
+                    Matcher album = filePattern.matcher(metadata.get("xmpDM:album").toUpperCase());
 
 
-                    if(title.find() || artist.find())
+                    if(title.find() || artist.find() || album.find())
                     {
 
                         System.out.println(cale+"\\"+nume);
@@ -183,7 +177,7 @@ public static void play(){ //deschide fisierul din path cu playerul nativ
 
     public static void cd(String muta)
     {
-        String cale = new String("D:\\a muzica");
+        String cale = new String("E:\\PROG\\CRIT\\20-PAjava\\lab4_Luca");
         File folderCurent = new File(cale);
         String[] subdirectoare = folderCurent.list();
 
@@ -200,7 +194,7 @@ public static void play(){ //deschide fisierul din path cu playerul nativ
 
     public static void info()
     {
-        String audioFileLoc = "D:\\a muzica\\Opeth\\Damnation 2003\\01_opeth-windowpane-amrc.mp3";
+        String audioFileLoc = "E:\\PROG\\CRIT\\20-PAjava\\lab4_Luca\\example.mp3";
 
         try {
 
@@ -213,9 +207,9 @@ public static void play(){ //deschide fisierul din path cu playerul nativ
             input.close();
 
 // List all metadata
-            String[] metadataNames = metadata.names();
+  /*          String[] metadataNames = metadata.names();
 
-/*
+
             for(String name : metadataNames){
                 System.out.println(name + ": " + metadata.get(name));
             }*/
@@ -227,6 +221,8 @@ public static void play(){ //deschide fisierul din path cu playerul nativ
 
             System.out.println("Title: " + metadata.get("title"));
             System.out.println("Artist: " + metadata.get("xmpDM:artist"));
+            System.out.println("Album: " + metadata.get("xmpDM:album"));
+            System.out.println("Release Date: " + metadata.get("xmpDM:releaseDate"));
             System.out.println("Genre: " + metadata.get("xmpDM:genre"));
             System.out.println("Format: " + metadata.get("xmpDM:audioCompressor"));
             System.out.println("Sample Rate: " + metadata.get("xmpDM:audioSampleRate"));
