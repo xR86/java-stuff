@@ -1,4 +1,4 @@
-package VisualPart;
+package visualPart;
 
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
@@ -44,7 +44,7 @@ public class MainFrame extends JFrame {
 /*
         cp.add(textArea,BorderLayout.CENTER);
         cp.add(button,BorderLayout.SOUTH);
-        cp.add(new VisualPart.FileTree(new File(".")));*/
+        cp.add(new visualPart.FileTree(new File(".")));*/
         Container cp = getContentPane();
         cp.add(jsplitPane);
     }

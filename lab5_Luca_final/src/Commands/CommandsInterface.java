@@ -1,4 +1,4 @@
-package Commands;
+package commands;
 
 /**
  * Interfata facuta pentru clasa comenzi

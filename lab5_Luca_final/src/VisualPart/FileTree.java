@@ -1,15 +1,28 @@
-package VisualPart; /**
+package visualPart; /**
  * Created by Admin on 31.03.2016.
  */
 
-import Commands.Commands;
+import commands.Commands;
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.Parser;
+import org.apache.tika.parser.mp3.Mp3Parser;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
 import java.awt.*;
-import java.io.File;
+import java.awt.event.*;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.Vector;
 
@@ -18,6 +31,43 @@ import java.util.Vector;
  */
 public class FileTree extends JPanel {
     public static String path;
+    public static String searchTitle;
+    public static String searchArtist;
+    private JTree tree;
+
+    JPopupMenu menu = new JPopupMenu("Popup");
+
+    /**
+     * Popup Trigger for Contextual Menu
+     */
+    class PopupTriggerListener extends MouseAdapter {
+        public void mousePressed(MouseEvent ev) {
+            int selRow = tree.getRowForLocation(ev.getX(), ev.getY());
+            TreePath selPath = tree.getPathForLocation(ev.getX(), ev.getY());
+            if(selRow != -1) {
+                if (SwingUtilities.isRightMouseButton(ev)) {
+                    menu.show(ev.getComponent(), ev.getX(), ev.getY());
+                }
+            }
+        }
+
+        public void mouseReleased(MouseEvent ev) {
+            /*if (ev.isPopupTrigger()) {
+                menu.show(ev.getComponent(), ev.getX(), ev.getY());
+            }*/
+            int selRow = tree.getRowForLocation(ev.getX(), ev.getY());
+            TreePath selPath = tree.getPathForLocation(ev.getX(), ev.getY());
+            if(selRow != -1) {
+                if (SwingUtilities.isRightMouseButton(ev)) {
+                    menu.show(ev.getComponent(), ev.getX(), ev.getY());
+                }
+            }
+        }
+
+        public void mouseClicked(MouseEvent ev) {
+        }
+    }
+
 
     /** Construct a FileTree of the current directory (same with the source) */
     FileTree(File dir) {
@@ -25,7 +75,45 @@ public class FileTree extends JPanel {
         setLayout(new BorderLayout());
 
         // Make a tree list with all the nodes, and make it a JTree
-        JTree tree = new JTree(addNodes(null, dir));
+        tree = new JTree(addNodes(null, dir));
+
+        tree.addMouseListener(new PopupTriggerListener());
+
+
+
+        Commands commands = new Commands();
+        JMenuItem newMenuItem = new JMenuItem("Play", KeyEvent.VK_N);
+        newMenuItem.addActionListener(new AbstractAction() {
+            //@Override
+            public void actionPerformed(ActionEvent e) {
+                commands.play(FileTree.path); //commands.play(path)
+            }
+        });
+        menu.add(newMenuItem);
+
+        JMenuItem searchMenuItem = new JMenuItem("Web Search", KeyEvent.VK_M);
+        searchMenuItem.addActionListener(new AbstractAction() {
+            //@Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    URI searchInfo = new URI("https://www.google.ro/search?q=" +
+                            URLEncoder.encode(FileTree.searchArtist,"UTF-8") +
+                            "%20" +
+                            URLEncoder.encode(FileTree.searchTitle,"UTF-8"));
+                    Desktop.getDesktop().browse(searchInfo);
+                } catch(IOException er){
+                    System.err.println("IO Error");
+                }
+                catch (URISyntaxException er){
+                    System.err.println("Error with the URI");
+                }
+
+
+            }
+        });
+        menu.add(searchMenuItem);
+
 
         // Add a listener
         tree.addTreeSelectionListener(new TreeSelectionListener() {
@@ -55,11 +143,39 @@ public class FileTree extends JPanel {
                 }
                 else if (jTreeVarSelectedPath.contains(".mp3") || jTreeVarSelectedPath.contains(".wav")) {
                     MainFrame.setRightPanel(commands.info(jTreeVarSelectedPath));
+
+                    /**
+                     * getting the metadatas in case of web search
+                     */
+                    try {
+                        InputStream input = new FileInputStream(new File(jTreeVarSelectedPath));
+                        ContentHandler handler = new DefaultHandler();
+                        Metadata metadata = new Metadata();
+                        Parser parser = new Mp3Parser();
+                        ParseContext parseCtx = new ParseContext();
+                        parser.parse(input, handler, metadata, parseCtx);
+                        input.close();
+
+                        /**
+                         * metadatas used for web search
+                         */
+                        searchTitle = metadata.get("title");
+                        searchArtist = metadata.get("xmpDM:artist");
+                    } catch (FileNotFoundException er) {
+                        System.err.println("File not found...");
+                    } catch (IOException er) {
+                        System.err.println("IO Error ...");
+                    } catch (SAXException er) {
+                        er.printStackTrace();
+                    } catch (TikaException er) {
+                        er.printStackTrace();
+                    }
+
                 }
                 else{
                     MainFrame.setRightPanel("Nothing to show here..");
                 }
-            }  //changing the value means selecting a file
+            }
         });
 
         // Lastly, put the JTree into a JScrollPane.
@@ -98,14 +214,6 @@ public class FileTree extends JPanel {
         for (int fnum = 0; fnum < files.size(); fnum++)
             curDir.add(new DefaultMutableTreeNode(files.elementAt(fnum)));
         return curDir;
-    }
-
-    public Dimension getMinimumSize() {
-        return new Dimension(200, 400);
-    }
-
-    public Dimension getPreferredSize() {
-        return new Dimension(200, 400);
     }
 
 }
