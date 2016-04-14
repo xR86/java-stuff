@@ -1,3 +1,9 @@
+#don't allow compiled java
+*.class
+
+
+
+#standard stuff...
 # Compiled Object files
 *.slo
 *.lo
