@@ -27,7 +27,7 @@ public class OracleConnect extends JFrame {
     }
 
     public void connect() throws SQLException {
-        this.conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1522/XE", user, pass); //change data here
+        this.conn = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/ORCL", user, pass); //change data here
     }
 
 

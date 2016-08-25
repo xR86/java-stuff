@@ -22,7 +22,7 @@ public class Main {
 
 
 
-            OracleConnect connection = new OracleConnect("STUDENT","STUDENT");
+            OracleConnect connection = new OracleConnect("STUDENT","student");
             connection.connect();
 
             connection.showBasicMetadata();
