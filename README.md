@@ -1,2 +1,5 @@
 # java-stuff
-PA java stuff here ...
+Advanced Programming Lab Homeworks
+
+Homework problems description can be found here: [profs.info.uaic.ro/~acf/java](http://profs.info.uaic.ro/~acf/java/)
+
