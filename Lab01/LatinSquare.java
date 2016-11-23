@@ -1,5 +1,5 @@
 
-public class Main {
+public class LatinSquare {
 
     //constants
     private static final int NRALFABGR = 25; //constanta asa ? (inlocuieste #define sau const din C++)

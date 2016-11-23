@@ -6,9 +6,6 @@
 package lab12;
 
 
-
-
-
 /**
  *
  * @author shull

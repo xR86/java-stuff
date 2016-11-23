@@ -2,6 +2,7 @@
 #standard exceptions
 # Compiled Object files
 *.obj
+*/*.class
 
 
 # Executables
