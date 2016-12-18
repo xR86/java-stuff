@@ -1,5 +1,16 @@
 # java-stuff
-Advanced Programming Lab Homeworks
+just java stuff ...
+
+## Updates:
++ Android apps will be shown here
+
+## Android
+
+Apps:
++ `Android-ChuckNorrisQuotes/` - app that shows Chuck Norris jokes from a public API (provided it has access to the internet)
+
+
+## Advanced Programming Lab Homeworks
 
 **Homework problems description** can be found here: [profs.info.uaic.ro/~acf/java](http://profs.info.uaic.ro/~acf/java/)
 
