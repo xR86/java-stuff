@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             //System.out.println(result.toString());
             JSONObject jsonObj = new JSONObject(result.toString());
 
-            String quote = jsonObj.getString("value");
+            String quote = "\u0020" + jsonObj.getString("value");
             //System.out.println(quote);
 
             TextView_quote.setText(quote);

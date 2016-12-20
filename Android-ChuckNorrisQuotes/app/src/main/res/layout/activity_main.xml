@@ -4,38 +4,54 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.guest_x.myapplication.MainActivity">
+    tools:context="com.xr86.chucknorrisquotes.MainActivity">
 
-
-    <ImageView
-        android:src="@drawable/chuck"
+    <RelativeLayout
+        android:id="@+id/InnerRelativeLayout"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
-        android:layout_height="470dp"
-        android:scaleType="centerCrop"
-        android:layout_centerInParent="true"
-        />
+        android:layout_marginBottom="50dp"
+        android:elevation="4dp"
+        >
 
-    <TextView
-        android:id="@+id/TextView_quote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Time waits for no man.\n Unless that man is Chuck Norris."
-        android:background="#FFF"
-        android:textColor="#B71C1C"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:layout_marginTop="370dp"
-        />
+        <ImageView
+            android:src="@drawable/img_chuck"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/img_chuck_alt"
+            />
+
+        <TextView
+            android:id="@+id/TextView_quote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:padding="3dp"
+            android:text="@string/quote"
+            android:background="@drawable/bg_elevated"
+            android:drawableStart="@drawable/ic_format_quote_black_24dp"
+            android:drawableLeft="@drawable/ic_format_quote_black_24dp"
+            android:drawableTint="#888"
+
+            android:textColor="#212121"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="#0091EA"
+        android:background="?attr/colorPrimary"
         android:textColor="#FFF"
-        android:text="new quote"
+        android:text="@string/btn_new"
         android:onClick="load_new_quote"
-        android:layout_marginTop="450dp"
+        android:layout_alignParentBottom="true"
         />
-
 </RelativeLayout>
