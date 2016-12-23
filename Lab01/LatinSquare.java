@@ -2,11 +2,11 @@
 public class LatinSquare {
 
     //constants
-    private static final int NRALFABGR = 25; //constanta asa ? (inlocuieste #define sau const din C++)
+    private static final int NRALFABGR = 25;
     private static final int NRALFABLAT = 26;
 
     //alphabets
-    private static String[] greek = new String[NRALFABGR];//cand folosesc String, cand folosesc char ...
+    private static String[] greek = new String[NRALFABGR];
     private static String[] latin = new String[NRALFABLAT];
 
 

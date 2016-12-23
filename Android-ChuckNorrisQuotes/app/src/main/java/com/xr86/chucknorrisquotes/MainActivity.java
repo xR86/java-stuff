@@ -35,9 +35,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void load_new_quote(View view){
-        //TextView_quote.setText("That didn't work!");
-
+    public String load_new_quote(View view){
         try {
 
             URL url = new URL("https://api.chucknorris.io/jokes/random");
@@ -50,20 +48,21 @@ public class MainActivity extends AppCompatActivity {
                 //System.out.println(line);
                 result.append(line);
             }
-            //System.out.println(result.toString());
-            JSONObject jsonObj = new JSONObject(result.toString());
+            urlConnection.disconnect();
 
+            JSONObject jsonObj = new JSONObject(result.toString());
             String quote = "\u0020" + jsonObj.getString("value");
             //System.out.println(quote);
 
             TextView_quote.setText(quote);
 
-            urlConnection.disconnect();
+            return quote;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
+        return null;
     }
 }
