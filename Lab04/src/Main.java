@@ -2,14 +2,9 @@
  * Created by shully on 3/22/2016.
  *
  */
-
-
 import java.io.*;
 
 public class Main {
-
-
-
 
     public static void main(String[] args) {
 

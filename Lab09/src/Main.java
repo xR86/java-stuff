@@ -19,9 +19,6 @@ public class Main {
     public static void main(String[] args) {
         //Date time;
         try {
-
-
-
             OracleConnect connection = new OracleConnect("STUDENT","student");
             connection.connect();
 
@@ -29,9 +26,6 @@ public class Main {
             connection.getTablesMetadata();
             connection.select_query();
             connection.setVisible(true);
-
-
-
         }  catch (SQLException e) {
             e.printStackTrace();
         }

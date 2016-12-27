@@ -38,7 +38,6 @@ public class LatinSquare {
             }
             //generate all latin letters
             for (int i = 0; i < latin.length; i++) {
-                //este inclus de doua ori tau - are doua forme diferite ?
                 latin[i] = Character.toString((char) (i + '\u0041'));/*"\u2202";*/
                 System.out.println(i + " , " + latin[i]);
             }

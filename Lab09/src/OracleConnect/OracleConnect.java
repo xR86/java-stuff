@@ -33,12 +33,10 @@ public class OracleConnect extends JFrame {
 
     public void select_query() throws SQLException {
 
-
         // Create columns names
         //String columnNames[] = { "Column 1", "Column 2", "Column 3" };
         // String columnNames[] = new String[10];
         // Create some data
-
 
         Statement stmt = conn.createStatement();
         Statement count_stmt = conn.createStatement();
