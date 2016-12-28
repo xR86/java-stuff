@@ -1,6 +1,13 @@
 # java-stuff
 Advanced Programming Lab Homeworks
 
+## Notes:
++ download jar from [http://www-us.apache.org/tika-app-1.14.jar](http://www-us.apache.org/dist/tika/tika-app-1.14.jar)
++ main class: `Main`
+
+<a href="screen.png"><img alt="screenshot" src="screen.png" width="600" height="auto" /></a>
+
+
 ### Lab description
 
 Starting from this week...:

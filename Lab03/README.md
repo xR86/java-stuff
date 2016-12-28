@@ -1,6 +1,11 @@
 # java-stuff
 Advanced Programming Lab Homeworks
 
+## Notes:
++ main class: `Main`
+
+<a href="screen.png"><img alt="screenshot" src="screen.png" width="600" height="auto" /></a>
+
 ### Lab description
 
 **Labyrinth**  

@@ -1,7 +1,3 @@
-package com.facultate;
-
-import com.facultate.LabyrinthMatrixImpl;
-
 /**
  * Created by Admin on 17.03.2016.
  */

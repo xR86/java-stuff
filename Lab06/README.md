@@ -1,6 +1,11 @@
 # java-stuff
 Advanced Programming Lab Homeworks
 
+## Notes:
++ main class: `CartesianPlot`
+
+<a href="screen.png"><img alt="screenshot" src="screen.png" width="600" height="auto" /></a>
+
 ### Lab description
 
 **Drawing Graphs of Functions**  

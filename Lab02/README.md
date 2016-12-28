@@ -1,6 +1,11 @@
 # java-stuff
 Advanced Programming Lab Homeworks
 
+## Notes:
++ main class: `Problem`
+
+<a href="screen.png"><img alt="screenshot" src="screen.png" width="600" height="auto" /></a>
+
 ### Lab description
 The Student-Project Allocation Problem (SPA) 
 An instance of SPA involves a set of **students**, **projects** and **lecturers**. Each project is offered by a unique lecturer and has a capacity constraint (an upper bound regarding how many students can be enrolled). 
