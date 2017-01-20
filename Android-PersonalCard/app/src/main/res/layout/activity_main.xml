@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- <ScrollView ...>-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.xr86.android_personalcard.MainActivity"
+    >
+
+    <ImageView
+        android:contentDescription="@string/background_img_contentDescription"
+        android:src="@drawable/hash_code_2016"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:alpha="0.9"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="@dimen/small_textview_padding"
+        android:paddingRight="@dimen/small_textview_padding"
+        style="@style/TextOverlayTheme"
+
+        android:text="@string/username_text" />
+    <!--android:layout_marginTop="30dp"--> <!-- for translucent version -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/link"
+        style="@style/TextOverlayTheme"
+
+        android:text="@string/invitation_text" />
+
+    <Button
+        android:id="@+id/link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        style="@style/BannerTheme"
+
+        android:text="@string/banner_text" />
+    <!--android:layout_marginBottom="50dp"--> <!-- for translucent version -->
+
+</RelativeLayout>
+<!-- </ScrollView>-->

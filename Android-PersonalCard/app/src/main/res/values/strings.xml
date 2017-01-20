@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HashCode Invitation</string>
+
+    <!-- Custom strings -->
+    <string name="banner_text">Google HashCode 2017</string>
+    <string name="invitation_text">You have been summoned</string>
+    <string name="username_text">xR86</string>
+    <string name="background_img_contentDescription">HashCode Final Round 2016 - Google Paris photo</string>
+</resources>
