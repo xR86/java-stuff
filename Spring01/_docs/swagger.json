@@ -1,0 +1,115 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Spring01",
+        "description": "Demo Spring App",
+        "version": "0.0.1"
+    },
+    "host": "api.uber.com",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/v1",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Displays root homepage.",
+                "description": "This is a method to display a html home for the root URL.\n",
+                "tags": [
+                    "RootController",
+                    "html"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The homepage",
+                        "schema": {
+                            "type": "string",
+                            "description": "index.html"
+                        }
+                    }
+                }
+            }
+        },
+        "/hello": {
+            "get": {
+                "summary": "Hello World endpoint",
+                "description": "This is a method to showcase returning a String to the user.\n",
+                "tags": [
+                    "RootController",
+                    "string"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Simple String return",
+                        "schema": {
+                            "type": "string",
+                            "description": "Hello World !"
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "summary": "Retrieves the users",
+                "description": "Opens the file with the users, parses it and returns it.",
+                "tags": [
+                    "UserController",
+                    "json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of users",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Adds a new user",
+                "description": "Opens the file,  parses it, converts the request body to json, adds it to the parsed array and saves the array to file",
+                "tags": [
+                    "UserController",
+                    "json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile information for a user",
+                        "schema": {
+                            "type": "string",
+                            "description": "hardcoded json response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "User id."
+                },
+                "age": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "User age."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "User name."
+                }
+            }
+        }
+    }
+}
