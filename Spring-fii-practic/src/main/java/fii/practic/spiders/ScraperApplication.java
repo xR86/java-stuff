@@ -1,4 +1,4 @@
-package fii.practic.scraper;
+package fii.practic.spiders;
 
 import java.util.Timer;
 

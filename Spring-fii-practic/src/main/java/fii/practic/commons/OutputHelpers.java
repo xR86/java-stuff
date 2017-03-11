@@ -1,4 +1,4 @@
-package fii.practic.utils;
+package fii.practic.commons;
 
 /**
  * Created by xR86 on 11-Mar-17.

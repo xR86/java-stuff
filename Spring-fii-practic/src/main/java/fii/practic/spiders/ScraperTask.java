@@ -1,4 +1,6 @@
-package fii.practic.scraper;
+package fii.practic.spiders;
+
+import fii.practic.spiders.vimeo.Vimeo;
 
 import java.util.TimerTask;
 
@@ -14,7 +16,7 @@ public class ScraperTask extends TimerTask {
     @Override
     public void run() {
         System.out.println("\nTask is running - 30 seconds till next run");
-        VimeoScraper vimeoObject = new VimeoScraper();
+        Vimeo vimeoObject = new Vimeo();
         vimeoObject.scrapeContent();
 
         System.out.println( "\tscraped content: " + vimeoObject.getVimeoScrapedContent() );
