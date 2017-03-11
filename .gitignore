@@ -4,6 +4,10 @@ Android/*
 Android-HappyBirthday/*
 Lab04/tika-app-1.14.jar
 
+# Safe files
+**/safe_*/
+**/safe_*
+
 # IDE-specific files
 */*.idea/*
 *.iml
