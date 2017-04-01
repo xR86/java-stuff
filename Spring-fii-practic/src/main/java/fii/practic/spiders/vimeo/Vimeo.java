@@ -1,88 +1,66 @@
 package fii.practic.spiders.vimeo;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fii.practic.commons.Spider;
+import fii.practic.spiders.vimeo.data.VimeoPage;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
-import fii.practic.commons.OutputHelpers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-//import static fii.practic.commons.OutputHelpers.getUpToNCharacters;
 
 import java.io.IOException;
 
 /**
- * Created by xR86 on 11-Mar-17.
+ * Vimeo spider implementation.
  */
-public class Vimeo implements Spider{
-    //Private instance variables
-    private JsonNode vimeoScrapedContent;
-    private int timeout;
+public class Vimeo implements Spider {
+    private static final Logger log = LoggerFactory.getLogger(Vimeo.class);
 
-    //const
-    public static final Logger log = LoggerFactory.getLogger(Vimeo.class);
-    public static final String BASE_URL = "http://vimeo.com";
-
-    public Vimeo() {
-        vimeoScrapedContent = null;
-        timeout = 6000;
-    }
+    public static final String BASE_URL = "https://vimeo.com";
 
     @Override
     public String getName() {
-        return "Vimeo scraper";
+        return "Vimeo";
     }
 
     @Override
     public void start() throws IOException {
+        log.debug("[STARTED] " + this.getName());
 
+        Document node = this.readPage(BASE_URL);
+        VimeoPage pageData = this.getData(node);
+        log.debug(pageData.toString());
+
+        // TODO get all videos (hint: VideoModule with type "category_menu")
     }
 
-    //Set & Get
-    public JsonNode getVimeoScrapedContent(){
-        return this.vimeoScrapedContent;
+    /**
+     * Setup connection and read page.
+     */
+    private Document readPage(String url) throws IOException {
+        return Jsoup.connect(BASE_URL).timeout(10000).get();
     }
 
-    //Utility functions
-    private Document getSite(String URL){
-        Document vimeoDocument = null;
-        OutputHelpers ot = new OutputHelpers();
-        try {
-            vimeoDocument = Jsoup.connect(URL).timeout(this.timeout).get();
-            //System.out.println( ot.getUpToNCharacters(vimeoDocument.toString(), 100) );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return vimeoDocument;
-    }
+    /**
+     * Extract data from page.
+     */
+    private VimeoPage getData(Document page) throws IOException {
+        // We use plain string manipulation to extract the data from the page
+        String dataStart = "vimeo.explore_data = ";
+        String dataEnd = "\"page_type\":\"explore\"}";
 
-    public void scrapeContent(){
-        //OutputHelpers ot = new OutputHelpers();
-        //Elements vimeoElements = vimeoDocument.select("vimeo.explore_data");
-        //System.out.println(vimeoElements);
+        String content = page.body().toString();
 
-        String rawPage = getSite("https://vimeo.com/").body().toString();
+        int startIndex = content.indexOf(dataStart) + dataStart.length();
+        int endIndex = content.indexOf(dataEnd) + dataEnd.length();
 
-        String queryStart = "vimeo.explore_data = "; //start of js variable
-        String queryEnd   = "\"explore\"}";          //end of js variable
-        int startIndex = rawPage.indexOf(queryStart) + queryStart.length();
-        int endIndex   = rawPage.indexOf(queryEnd) + queryEnd.length();
-
-        String vimeoJsonString = rawPage.substring(startIndex, endIndex);
-        //System.out.println(vimeoJsonString);
+        String rowData = content.substring(startIndex, endIndex);
 
         ObjectMapper mapper = new ObjectMapper();
-        try {
-            this.vimeoScrapedContent = mapper.readTree(vimeoJsonString);
-            //System.out.println( ot.getUpToNCharacters(vimeoJson.toString(), 100) );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+        mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
-    public static void main(String[] args) {
+        return mapper.readValue(rowData, VimeoPage.class);
 
     }
 }
