@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
+import static org.apache.commons.lang.StringEscapeUtils.escapeJava;
+
 /**
  * REST API used for retrieving videos.
  */
@@ -24,6 +27,10 @@ public class VideosService {
 
     @RequestMapping(path = "/videos",method = RequestMethod.GET)
     public List<Video> list(@RequestParam(value = "name", defaultValue = "") String name) {
-        return this.videoControl.findByName(name);
+        System.out.println(escapeJava(name));
+        System.out.println(escapeHtml(name));
+
+        //TODO: code still vulnerable to backslash injection (other cases such as " are covered by escapeJava)
+        return this.videoControl.findByName(escapeJava(name));
     }
 }
