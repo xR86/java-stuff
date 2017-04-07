@@ -45,3 +45,36 @@
 .demo-footer .mdl-mini-footer--link-list a {
   font-size: 13px;
 }
+
+/* Custom styles */
+
+.mdl-card {
+  text-decoration: none;
+  transition: 0.5s ease-in-out;
+}
+
+.mdl-card:hover {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);
+  background: #C5CAE9;
+  transition: 0.2s ease;
+}
+
+/*.mdl-card:visited{
+  background: #D1C4E9;
+}*/
+
+.mdl-card__title {
+  height: 10rem;
+}
+
+.mdl-card__media > img {
+  width: 100%; /*smaller images will be bigger*/
+  max-width: 100%; /*images will be responsive*/
+  max-height: 10rem;
+  margin-bottom: 0.1rem;
+}
+
+.mdl-card__actions.mdl-card--border {
+  /*position: absolute;
+  bottom: 0rem;*/
+}

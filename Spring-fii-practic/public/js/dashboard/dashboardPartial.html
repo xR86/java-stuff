@@ -1,11 +1,13 @@
-<div>
+<div ng-controller="videoCtrl">
     <div class="demo-crumbs mdl-color-text--grey-500">
-      http://localhost:8080/
+      http://localhost:9720/#/dashboard
     </div>
     <h4><i class="material-icons">bookmark</i> Dashboard</h4>
     
-    <div ng-repeat="x in msgList">
-	    <video></video>
+    <div class="mdl-layout__content mdl-grid">
+	    <a ng-href="{{ x.url }}" ng-repeat="x in videosList" class="mdl-card mdl-cell mdl-cell--4-col mdl-shadow--2dp"><!--   graybox-->
+		    <video></video>
+		</a>
 	</div>
 
 </div>
