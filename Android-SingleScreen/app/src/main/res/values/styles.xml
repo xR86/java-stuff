@@ -31,11 +31,11 @@
     </style>
 
     <style name="TextH2Theme" parent="TextOverlayTheme">
-        <item name="android:textSize">50sp</item>
+        <item name="android:textSize">@dimen/h2_size</item>
     </style>
 
     <style name="TextH4Theme" parent="TextOverlayTheme">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">@dimen/h4_size</item>
     </style>
 
 </resources>

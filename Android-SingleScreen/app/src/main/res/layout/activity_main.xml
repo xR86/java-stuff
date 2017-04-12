@@ -27,27 +27,23 @@
             android:text="That café"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/location_icon"
-            style="@style/ImageOverlayTheme"
-            android:layout_below="@id/title"
-            android:src="@drawable/ic_place_black_24dp" />
-
         <TextView
             android:id="@+id/location_text"
             style="@style/TextH4Theme"
+            android:autoLink="map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/title"
             android:layout_toRightOf="@+id/location_icon"
-            android:text="Carol I street"
+            android:text="Street Carol I, Iasi"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/phone_icon"
+            android:id="@+id/location_icon"
             style="@style/ImageOverlayTheme"
-            android:layout_below="@id/location_icon"
-            android:src="@drawable/ic_call_black_24dp" />
+            android:layout_alignBottom="@id/location_text"
+            android:layout_below="@id/title"
+            android:src="@drawable/ic_place_black_24dp" />
 
         <TextView
             android:id="@+id/phone_text"
@@ -58,13 +54,16 @@
             android:layout_toRightOf="@+id/phone_icon"
             android:autoLink="phone"
             android:text="0700 123 123"
+            android:textColorLink="@color/colorTextA"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/fb_icon"
+            android:id="@+id/phone_icon"
             style="@style/ImageOverlayTheme"
-            android:layout_below="@id/phone_icon"
-            android:src="@drawable/ic_c_facebook_box_black_24dp" />
+            android:layout_alignBottom="@id/phone_text"
+            android:layout_below="@id/location_icon"
+            android:src="@drawable/ic_call_black_24dp" />
+
 
         <TextView
             android:id="@+id/fb_text"
@@ -73,15 +72,29 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/phone_icon"
             android:layout_toRightOf="@+id/fb_icon"
-            android:text="ThatCafe"
+            android:autoLink="web"
+            android:linksClickable="true"
+            android:text="@string/fb_text"
+            android:textColorLink="@color/colorTextA"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/fb_icon"
+            style="@style/ImageOverlayTheme"
+            android:layout_alignBottom="@id/fb_text"
+            android:layout_below="@id/phone_icon"
+            android:src="@drawable/ic_c_facebook_box_black_24dp" />
+
 
         <Button
             android:id="@+id/coffee_button"
             style="@style/ButtonOverlayTheme"
+            android:alpha="0"
+
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="190dp"
             android:layout_below="@id/fb_icon"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="50dp"
             android:onClick="coffeeAnimationTrigger"
             android:text="I want coffee" />
@@ -89,7 +102,9 @@
         <ImageView
             android:id="@+id/coffee_icon"
             style="@style/ImageOverlayTheme"
-            android:layout_below="@id/coffee_button"
-            android:src="@drawable/ic_local_cafe_black_24dp" />
+            android:alpha="0.1"
+            android:src="@drawable/ic_local_cafe_black_24dp"
+            android:layout_alignBottom="@+id/coffee_button"
+            android:layout_toRightOf="@+id/fb_icon" />
     </RelativeLayout>
 </ScrollView>
