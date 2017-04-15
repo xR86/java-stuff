@@ -1,0 +1,37 @@
+{
+	"title": "Web quiz",
+	"questions": [
+		{
+			"text": "What is <div> ?",
+			"layout": "horizontal",
+			"options": [
+				{
+					"text": "a link"
+				},
+				{
+					"text": "a container"
+				},
+				{
+					"text": "a paragraph"
+				}
+			],
+			"answer": 2
+		},
+		{
+			"text": "What is #000 ?",
+			"layout": "vertical",
+			"options": [
+				{
+					"text": "a HEX color code"
+				},
+				{
+					"text": "a RGB color code"
+				},
+				{
+					"text": "a HSL color code"
+				}
+			],
+			"answer": 1
+		}
+	]
+}
