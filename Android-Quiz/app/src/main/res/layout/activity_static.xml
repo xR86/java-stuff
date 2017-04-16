@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="io.github.xr86.quiz.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/question_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- TODO: addition - http://stackoverflow.com/a/19787125/6139015 -->
+        <TextView
+            style="@style/TextViewStyle"
+            android:text="1. What is the result of these CSS rules ?\n\twidth: 10rem;\n\theight: 10rem;\n\tbackground-color: #CFC;" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                style="@style/RadioBtnStyle"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/question_opt_1" />
+
+            <RadioButton
+                style="@style/RadioBtnStyle"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/question_opt_2" />
+
+            <RadioButton
+                style="@style/RadioBtnStyle"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/question_opt_3" />
+        </RadioGroup>
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:text="2. How can you add a comment in a JavaScript?" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                style="@style/RadioBtnStyle"
+                android:text="&lt;!--This is a comment--&gt;" />
+
+            <RadioButton
+                style="@style/RadioBtnStyle"
+                android:text="'This is a comment" />
+
+            <RadioButton
+                style="@style/RadioBtnStyle"
+                android:text="//This is a comment" />
+        </RadioGroup>
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:text="3. What is the correct way to write a JavaScript array?" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                style="@style/RadioBtnStyle"
+                android:text="var colors = (1:'red', 2:'green', 3:'blue')" />
+
+            <RadioButton
+                style="@style/RadioBtnStyle"
+                android:text="var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')" />
+
+            <RadioButton
+                style="@style/RadioBtnStyle"
+                android:text="var colors = ['red', 'green', 'blue']" />
+        </RadioGroup>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="calculateScore"
+            android:text="Submit" />
+    </LinearLayout>
+
+</ScrollView>

@@ -32,6 +32,41 @@
 				}
 			],
 			"answer": 1
+		},
+		{
+			"text": "How do you include a CSS file ?",
+			"layout": "vertical",
+			"options": [
+				{
+					"text": "<link rel=\"stylesheet\" type=\"text/css\" href=\"theme.css\">"
+				},
+				{
+					"text": "<script type=\"text/css\" src=\"theme.css\"></script>"
+				},
+				{
+					"text": "<meta type=\"text/css\" href=\"theme.css\""
+				}
+			],
+			"answer": 1
+		},
+		{
+			"text": "What is the correct JavaScript syntax to change the content of the HTML element below?\n <p id=\"demo\">This is a demonstration.</p>",
+			"layout": "vertical",
+			"options": [
+				{
+					"text": "document.getElementByName(\"p\").innerHTML = \"Hello World!\";"
+				},
+				{
+					"text": "#demo.innerHTML = \"Hello World!\";"
+				},
+				{
+					"text": "document.getElement(\"p\").innerHTML = \"Hello World!\";"
+				},
+				{
+					"text": "document.getElementById(\"demo\").innerHTML = \"Hello World!\";"
+				}
+			],
+			"answer": 4
 		}
 	]
 }

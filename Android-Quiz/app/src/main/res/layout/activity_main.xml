@@ -11,27 +11,28 @@
     tools:context="io.github.xr86.quiz.MainActivity">
 
     <LinearLayout
-        android:id="@+id/question_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:gravity="center">
 
-        <!--<TextView-->
-            <!--style="@style/TextViewStyle"-->
-            <!--android:text="1. Question ?" />-->
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:drawableTint="@color/colorAccent"
+            android:drawableTop="@drawable/ic_c_application_black_24dp"
+            android:onClick="startStaticActivity"
+            android:text="Static Quiz"
+            android:textSize="20sp" />
 
-        <!--<RadioGroup-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content">-->
-
-            <!--<RadioButton style="@style/RadioBtnStyle"-->
-                <!--android:text="Ceva 1"/>-->
-
-            <!--<RadioButton style="@style/RadioBtnStyle"-->
-                <!--android:text="Ceva 2"/>-->
-        <!--</RadioGroup>-->
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:drawableTint="@color/colorAccent"
+            android:drawableTop="@drawable/ic_c_json_black_24dp"
+            android:onClick="startDynamicActivity"
+            android:text="Dynamic Quiz"
+            android:textSize="20sp" />
 
     </LinearLayout>
-
 </ScrollView>
