@@ -46,12 +46,12 @@ public class StaticActivity extends AppCompatActivity {
             if(correctAnswers.get(qCount) - 1 == idx){ //json response is offseted by +1 (user count)
                 correctCount++;
             }
-            
+
             qCount += 1;
         }
 
         if(correctCount > questionCount / 2){
-            Toast.makeText(this, "Congratuations ! You answered correctly " + correctCount + " out of " + questionCount + " questions", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Congratulations ! You answered correctly " + correctCount + " out of " + questionCount + " questions", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Too bad ! You answered correctly " + correctCount + " out of " + questionCount + " questions", Toast.LENGTH_SHORT).show();
         }

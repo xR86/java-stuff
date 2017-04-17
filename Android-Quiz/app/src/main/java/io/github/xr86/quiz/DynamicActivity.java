@@ -181,7 +181,7 @@ public class DynamicActivity extends AppCompatActivity {
         }
 
         if(correctCount > questionCount / 2){
-            Toast.makeText(this, "Congratuations ! You answered correctly " + correctCount + " out of " + questionCount + " questions", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Congratulations ! You answered correctly " + correctCount + " out of " + questionCount + " questions", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Too bad ! You answered correctly " + correctCount + " out of " + questionCount + " questions", Toast.LENGTH_SHORT).show();
         }
