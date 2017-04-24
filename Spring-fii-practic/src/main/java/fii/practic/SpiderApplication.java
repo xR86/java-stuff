@@ -17,6 +17,7 @@ public class SpiderApplication {
 
         try {
             executor.submit(SpiderRunnerFactory.createSpiderRunner(Vimeo.class));
+            //executor.submit(SpiderRunnerFactory.createSpiderRunner(Youtube.class));
         } catch (InstantiationException e) {
             e.printStackTrace();
         }

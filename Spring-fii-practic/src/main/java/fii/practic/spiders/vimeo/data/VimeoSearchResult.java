@@ -3,6 +3,7 @@ package fii.practic.spiders.vimeo.data;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * DTO representing the video search results.
@@ -108,6 +109,11 @@ public class VimeoSearchResult {
         @JsonProperty("created_time")
         private String createdTime;
 
+        private String pictures;
+        private String picture;
+
+
+
         public String getUri() {
             return uri;
         }
@@ -127,6 +133,16 @@ public class VimeoSearchResult {
         public String getCreatedTime() {
             return createdTime;
         }
+
+        @JsonProperty("pictures")
+        private void unpackPictureFromNestedObject(Map<String, String> pictures) {
+            picture = pictures.get("sizes");
+        }
+
+        public String getPictures() {
+            return pictures;
+        }
+        public String getPicture() { return picture; }
     }
 
     public static class Context {
