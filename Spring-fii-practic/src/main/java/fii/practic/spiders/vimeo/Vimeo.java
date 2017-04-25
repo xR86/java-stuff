@@ -117,8 +117,8 @@ public class Vimeo implements Spider {
             video.setUrl(clip.getLink());
 
             // TODO get the remaining data
-            video.setPictures(clip.getPictures());
-            video.setPicture(clip.getPicture());
+            //video.setPictures(clip.getPictures());
+            video.setPicture(clip.getPictures().getSizes().get(0).getLink());
 
             newVideos.add(video);
         }

@@ -16,7 +16,7 @@ public class Video {
     private String url;
     private String embeded;
 
-    private String pictures;
+    //private String pictures;
     private String picture;
 
     public String getName() {
@@ -59,15 +59,15 @@ public class Video {
         this.embeded = embeded;
     }
 
-    public String getPictures() {
-        return pictures;
-    }
-    public void setPictures(String pictures) {
-        this.pictures = pictures;
-    }
-
+//    public String getPictures() {
+//        return pictures;
+//    }
+//    public void setPictures(String pictures) {
+//        this.pictures = pictures;
+//    }
+//
     public String getPicture() {
-        return pictures;
+        return picture;
     }
     public void setPicture(String picture) {
         this.picture = picture;
@@ -80,7 +80,7 @@ public class Video {
                 ", videoType=" + videoType +
                 ", videoSource=" + videoSource +
                 ", url='" + url + '\'' +
-                ", picture_url='" + pictures + '\'' +
+                ", picture_url='" + picture + '\'' +
                 '}';
     }
 }

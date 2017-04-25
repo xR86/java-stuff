@@ -109,8 +109,9 @@ public class VimeoSearchResult {
         @JsonProperty("created_time")
         private String createdTime;
 
-        private String pictures;
-        private String picture;
+        //private String pictures;
+        //private String picture;
+        private VimeoPictures pictures;
 
 
 
@@ -134,15 +135,45 @@ public class VimeoSearchResult {
             return createdTime;
         }
 
-        @JsonProperty("pictures")
-        private void unpackPictureFromNestedObject(Map<String, String> pictures) {
-            picture = pictures.get("sizes");
-        }
+//        @JsonProperty("pictures")
+//        private void unpackPictureFromNestedObject(Map<String, String> pictures) {
+//            picture = pictures.get("sizes");
+//        }
+//
+//        public String getPictures() {
+//            return pictures;
+//        }
+//        public String getPicture() { return picture; }
 
-        public String getPictures() {
-            return pictures;
+        public VimeoPictures getPictures() { return pictures; }
+    }
+
+    public static class VimeoPictures {
+        private List<VimeoPicture> sizes;
+
+        public List<VimeoPicture> getSizes() {
+            return sizes;
         }
-        public String getPicture() { return picture; }
+    }
+
+    public static class VimeoPicture {
+        private String width;
+        private String height;
+        private String link;
+        private String link_with_play_button;
+
+        public String getWidth() {
+            return width;
+        }
+        public String getHeight() {
+            return height;
+        }
+        public String getLink() {
+            return link;
+        }
+        public String getLink_with_play_button() {
+            return link_with_play_button;
+        }
     }
 
     public static class Context {
