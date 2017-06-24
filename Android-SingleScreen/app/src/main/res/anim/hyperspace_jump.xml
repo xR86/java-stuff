@@ -10,9 +10,26 @@
         android:pivotY="50%"
         android:fillAfter="false"
         android:duration="700" />
+
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="400" />
+
     <set
         android:interpolator="@android:anim/accelerate_interpolator"
         android:startOffset="700">
+
+        <rotate
+            android:fromDegrees="0"
+            android:toDegrees="360"
+
+            android:interpolator="@android:anim/linear_interpolator"
+            android:duration="400"
+            android:pivotX="50%"
+            android:pivotY="0%"
+            />
+
         <scale
             android:fromXScale="1.4"
             android:toXScale="0.0"
@@ -20,19 +37,6 @@
             android:toYScale="0.0"
             android:pivotX="50%"
             android:pivotY="50%"
-            android:duration="400" />
-        <rotate
-            android:fromDegrees="0"
-            android:toDegrees="-45"
-            android:toYScale="0.0"
-            android:pivotX="50%"
-            android:pivotY="50%"
-            android:duration="400" />
-
-        <!-- TODO: try this -->
-        <alpha
-            android:fromAlpha="0"
-            android:toAlpha="1"
             android:duration="400" />
     </set>
 
