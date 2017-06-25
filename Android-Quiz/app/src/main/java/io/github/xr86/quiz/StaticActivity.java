@@ -24,6 +24,11 @@ public class StaticActivity extends AppCompatActivity {
         correctAnswers.add(3);
     }
 
+    /**
+     * calculateScore - based on the questions in the container and on the correct answers list,
+     * calculates and displays the score for the quiz
+     * @param v - View to be passed
+     */
     public void calculateScore(View v){
         LinearLayout viewContainer = (LinearLayout) findViewById(R.id.question_container);
 
@@ -40,9 +45,7 @@ public class StaticActivity extends AppCompatActivity {
             View radioButton = radioButtonGroup.findViewById(radioButtonID);
             int idx = radioButtonGroup.indexOfChild(radioButton); //in the json count starts from 1
 
-            //Log.v("DynamicActivity.java", "\tqCount: " + qCount);
             //Log.v("DynamicActivity.java", "\tcorrectAnswers(qCount): " + correctAnswers.get(qCount));
-            //Log.v("DynamicActivity.java", "\tidx: " + idx);
             if(correctAnswers.get(qCount) - 1 == idx){ //json response is offseted by +1 (user count)
                 correctCount++;
             }

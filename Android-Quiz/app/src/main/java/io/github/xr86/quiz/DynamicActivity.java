@@ -57,6 +57,11 @@ public class DynamicActivity extends AppCompatActivity {
         constructView(configJson);
     }
 
+    /**
+     * readFromFile - utility function to read a whole file and save it in a String
+     * @param file - file to be read (InputStream)
+     * @return fullText StringBuilder - returned as String
+     */
     private String readFromFile(InputStream file){
         BufferedReader reader = null;
         StringBuilder fullText = new StringBuilder();
@@ -64,9 +69,7 @@ public class DynamicActivity extends AppCompatActivity {
         try {
             reader = new BufferedReader(new InputStreamReader(file));
             String line = null;
-
             while ((line = reader.readLine()) != null) {
-                //Log.v("DynamicActivity.java" , line);
                 fullText.append(line);
             }
         } catch (IOException e) {
@@ -84,6 +87,11 @@ public class DynamicActivity extends AppCompatActivity {
         return fullText.toString();
     }
 
+    /**
+     * constructView - function that constructs the view with questions
+     * inside the LinearLayout of the Dynamic Activity Layout (which is by default empty)
+     * @param configJson - a configuration json based on some policies
+     */
     private void constructView(JsonNode configJson){
         Log.v("DynamicActivity.java", "RUN constructView()" );
         //Log.v("DynamicActivity.java", configJson.at("/questions").asText() );
@@ -154,10 +162,15 @@ public class DynamicActivity extends AppCompatActivity {
         Log.v("DynamicActivity.java", "END constructView()" );
     }
 
+    /**
+     * calculateScore - based on the questions in the container and on the correct answers list,
+     * calculates and displays the score for the quiz
+     * @param v - View to be passed
+     */
     public void calculateScore(View v){
         LinearLayout viewContainer = (LinearLayout) findViewById(R.id.question_container);
 
-        int questionCount =  viewContainer.getChildCount() / 2;
+        //int questionCount =  viewContainer.getChildCount() / 2;
 
         int correctCount = 0;
         int qCount = 0;
@@ -173,17 +186,16 @@ public class DynamicActivity extends AppCompatActivity {
             //Log.v("DynamicActivity.java", "\tqCount: " + qCount);
             //Log.v("DynamicActivity.java", "\tcorrectAnswers(qCount): " + correctAnswers.get(qCount));
             //Log.v("DynamicActivity.java", "\tidx: " + idx);
-            if(correctAnswers.get(qCount) - 1 == idx){ //json response is offseted by +1 (user count)
+            if( (correctAnswers.get(qCount) - 1) == idx){ //json response is offseted by +1 (user count)
                 correctCount++;
             }
-
             qCount += 1;
         }
 
-        if(correctCount > questionCount / 2){
-            Toast.makeText(this, "Congratulations ! You answered correctly " + correctCount + " out of " + questionCount + " questions", Toast.LENGTH_SHORT).show();
+        if(correctCount > qCount / 2){
+            Toast.makeText(this, "Congratulations ! You answered correctly " + correctCount + " out of " + qCount + " questions", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Too bad ! You answered correctly " + correctCount + " out of " + questionCount + " questions", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Too bad ! You answered correctly " + correctCount + " out of " + qCount + " questions", Toast.LENGTH_SHORT).show();
         }
     }
 }

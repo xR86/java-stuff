@@ -17,22 +17,18 @@
         android:gravity="center">
 
         <Button
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            style="@style/MainBtn"
             android:drawableTint="@color/colorAccent"
             android:drawableTop="@drawable/ic_c_application_black_24dp"
             android:onClick="startStaticActivity"
-            android:text="Static Quiz"
-            android:textSize="20sp" />
+            android:text="Static Quiz" />
 
         <Button
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            style="@style/MainBtn"
             android:drawableTint="@color/colorAccent"
             android:drawableTop="@drawable/ic_c_json_black_24dp"
             android:onClick="startDynamicActivity"
-            android:text="Dynamic Quiz"
-            android:textSize="20sp" />
+            android:text="Dynamic Quiz" />
 
     </LinearLayout>
 </ScrollView>

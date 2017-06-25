@@ -37,3 +37,5 @@ Static and dynamic Web quiz.
 
 <img src="screen-dynamic.png" alt="App screen" width="240" border="1" />
 > dynamic screen
+
+https://stackoverflow.com/questions/39535475/what-is-the-default-font-family-in-android

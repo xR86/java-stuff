@@ -25,24 +25,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <RadioButton
                 style="@style/RadioBtnStyle"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/question_opt_1" />
-
+                android:drawableTop="@drawable/question_1_opt_1" />
             <RadioButton
                 style="@style/RadioBtnStyle"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/question_opt_2" />
-
+                android:drawableTop="@drawable/question_1_opt_2" />
             <RadioButton
                 style="@style/RadioBtnStyle"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/question_opt_3" />
+                android:drawableTop="@drawable/question_1_opt_3" />
         </RadioGroup>
 
         <TextView
@@ -53,15 +50,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <RadioButton
                 style="@style/RadioBtnStyle"
                 android:text="&lt;!--This is a comment--&gt;" />
-
             <RadioButton
                 style="@style/RadioBtnStyle"
                 android:text="'This is a comment" />
-
             <RadioButton
                 style="@style/RadioBtnStyle"
                 android:text="//This is a comment" />
@@ -75,15 +69,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <RadioButton
                 style="@style/RadioBtnStyle"
                 android:text="var colors = (1:'red', 2:'green', 3:'blue')" />
-
             <RadioButton
                 style="@style/RadioBtnStyle"
                 android:text="var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')" />
-
             <RadioButton
                 style="@style/RadioBtnStyle"
                 android:text="var colors = ['red', 'green', 'blue']" />
