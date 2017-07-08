@@ -11,7 +11,49 @@
     tools:context="io.github.xr86.android_musicalstructure.MainActivity">
 
     <TextView
+        android:id="@+id/track_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerHorizontal="true"
+        android:text="Music title"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/track_logo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/track_title"
+        android:background="#DDD"
+        android:src="@drawable/ic_audiotrack_black_24dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/track_logo"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="buttonClickPlaceholder"
+            android:text="prev" />
+
+        <Button
+            android:id="@+id/play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/prev"
+            android:text="Play" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/play"
+            android:onClick="buttonClickPlaceholder"
+            android:text="next" />
+    </LinearLayout>
+
+
 </RelativeLayout>
