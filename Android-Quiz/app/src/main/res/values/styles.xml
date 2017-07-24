@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Custom styles -->
     <style name="MainBtn" parent="AppTheme">
         <item name="android:layout_width">@dimen/main_btn_size</item>
         <item name="android:layout_height">@dimen/main_btn_size</item>
@@ -27,12 +28,30 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="ImgRadioBtnStyle" parent="RadioBtnStyle">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="CheckboxBtnStyle" parent="AppTheme">
+        <!--<item name="android:width">30dp</item>-->
+        <!--<item name="android:height">20dp</item>-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="TextViewStyle" parent="AppTheme">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_vertical</item>
-
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="EditTextStyle" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:background">@color/colorNeutral</item>
+    </style>
 </resources>

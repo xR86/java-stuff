@@ -21,14 +21,12 @@
             android:drawableTint="@color/colorAccent"
             android:drawableTop="@drawable/ic_c_application_black_24dp"
             android:onClick="startStaticActivity"
-            android:text="Static Quiz" />
-
+            android:text="@string/main_btn_1" />
         <Button
             style="@style/MainBtn"
             android:drawableTint="@color/colorAccent"
             android:drawableTop="@drawable/ic_c_json_black_24dp"
             android:onClick="startDynamicActivity"
-            android:text="Dynamic Quiz" />
-
+            android:text="@string/main_btn_2" />
     </LinearLayout>
 </ScrollView>

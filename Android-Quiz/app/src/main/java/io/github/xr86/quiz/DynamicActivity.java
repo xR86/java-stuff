@@ -102,18 +102,17 @@ public class DynamicActivity extends AppCompatActivity {
 
         int i = 1;
         for(JsonNode question : questions){
-            //Log.v("DynamicActivity.java", question.toString());
-
             TextView questionTextView = new TextView(this);
             TextViewCompat.setTextAppearance(questionTextView, R.style.TextViewStyle);
-            questionTextView.setText(i + ". " + question.get("text").asText());
 
+            //set text
+            questionTextView.setText(i + ". " + question.get("text").asText());
             viewContainer.addView(questionTextView);
 
+            //set orientation
             RadioGroup optionsRadioGroup = new RadioGroup(this);
             //optionsRadioGroup.setId(R.id.options_group);
-
-            Log.v("DynamicActivity.java", "Layout is: " + question.get("layout").asText());
+            //Log.v("DynamicActivity.java", "Layout is: " + question.get("layout").asText());
             if( "horizontal".equals(question.get("layout").asText()) ) {
                 optionsRadioGroup.setOrientation(LinearLayout.HORIZONTAL);
             } else {
@@ -125,13 +124,13 @@ public class DynamicActivity extends AppCompatActivity {
                     )
             );
 
-
+            //set radio options
             JsonNode options = question.get("options");
             Log.v("DynamicActivity.java", question.get("options").asText());
             for(JsonNode option : options){
-                Log.v("DynamicActivity.java", "option:\t" + option.get("text").asText());
-
+                //Log.v("DynamicActivity.java", "option:\t" + option.get("text").asText());
                 RadioButton optionRadioButton = new RadioButton(this);
+
                 //TODO: you shouldn't do these ~inline (HACK)
                 if (Build.VERSION.SDK_INT < 23) {
                     optionRadioButton.setTextAppearance(this, R.style.RadioBtnStyle);
@@ -139,13 +138,12 @@ public class DynamicActivity extends AppCompatActivity {
                     optionRadioButton.setTextAppearance(R.style.RadioBtnStyle);
                 }
                 optionRadioButton.setText(option.get("text").asText());
-
                 optionsRadioGroup.addView(optionRadioButton);
             }
             viewContainer.addView(optionsRadioGroup);
 
-            Log.v("DynamicActivity.java", "answer: " + question.get("answer").asText());
-            correctAnswers.add(question.get("answer").asInt());
+            //Log.v("DynamicActivity.java", "answer: " + question.get("answer").asText());
+            correctAnswers.add(question.get("answer").asInt() - 1); //json answers starting from 1
             i++;
         }
 
@@ -170,8 +168,6 @@ public class DynamicActivity extends AppCompatActivity {
     public void calculateScore(View v){
         LinearLayout viewContainer = (LinearLayout) findViewById(R.id.question_container);
 
-        //int questionCount =  viewContainer.getChildCount() / 2;
-
         int correctCount = 0;
         int qCount = 0;
         for(int i = 1; i < viewContainer.getChildCount(); i += 2){
@@ -181,12 +177,9 @@ public class DynamicActivity extends AppCompatActivity {
             RadioGroup radioButtonGroup = (RadioGroup) viewContainer.getChildAt(i);
             int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
             View radioButton = radioButtonGroup.findViewById(radioButtonID);
-            int idx = radioButtonGroup.indexOfChild(radioButton); //in the json count starts from 1
+            int idx = radioButtonGroup.indexOfChild(radioButton);
 
-            //Log.v("DynamicActivity.java", "\tqCount: " + qCount);
-            //Log.v("DynamicActivity.java", "\tcorrectAnswers(qCount): " + correctAnswers.get(qCount));
-            //Log.v("DynamicActivity.java", "\tidx: " + idx);
-            if( (correctAnswers.get(qCount) - 1) == idx){ //json response is offseted by +1 (user count)
+            if(correctAnswers.get(qCount) == idx){ //json response is offseted by +1 (user count)
                 correctCount++;
             }
             qCount += 1;

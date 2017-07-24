@@ -19,24 +19,25 @@
         <!-- TODO: addition - http://stackoverflow.com/a/19787125/6139015 -->
         <TextView
             style="@style/TextViewStyle"
-            android:text="1. What is the result of these CSS rules ?\n\twidth: 10rem;\n\theight: 10rem;\n\tbackground-color: #CFC;" />
+            android:text="@string/static_1_question" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <RadioButton
-                style="@style/RadioBtnStyle"
+                style="@style/ImgRadioBtnStyle"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/question_1_opt_1" />
+
             <RadioButton
-                style="@style/RadioBtnStyle"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
+                style="@style/ImgRadioBtnStyle"
                 android:drawableTop="@drawable/question_1_opt_2" />
+
             <RadioButton
-                style="@style/RadioBtnStyle"
+                style="@style/ImgRadioBtnStyle"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/question_1_opt_3" />
@@ -44,77 +45,82 @@
 
         <TextView
             style="@style/TextViewStyle"
-            android:text="2. How can you add a comment in a JavaScript?" />
+            android:text="@string/static_2_question" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <RadioButton
                 style="@style/RadioBtnStyle"
-                android:text="&lt;!--This is a comment--&gt;" />
+                android:text="@string/static_2_answer_1" />
+
             <RadioButton
                 style="@style/RadioBtnStyle"
-                android:text="'This is a comment" />
+                android:text="@string/static_2_answer_2" />
+
             <RadioButton
                 style="@style/RadioBtnStyle"
-                android:text="//This is a comment" />
+                android:text="@string/static_2_answer_3" />
         </RadioGroup>
 
         <TextView
             style="@style/TextViewStyle"
-            android:text="3. What is the correct way to write a JavaScript array?" />
+            android:text="@string/static_3_question" />
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <RadioButton
                 style="@style/RadioBtnStyle"
-                android:text="var colors = (1:'red', 2:'green', 3:'blue')" />
+                android:text="@string/static_3_answer_1" />
+
             <RadioButton
                 style="@style/RadioBtnStyle"
-                android:text="var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')" />
+                android:text="@string/static_3_answer_2" />
+
             <RadioButton
                 style="@style/RadioBtnStyle"
-                android:text="var colors = ['red', 'green', 'blue']" />
+                android:text="@string/static_3_answer_3" />
         </RadioGroup>
 
         <TextView
             style="@style/TextViewStyle"
-            android:text="4. How do you include CSS ?" />
+            android:text="@string/static_4_question" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <CheckBox
-                style="@style/RadioBtnStyle"
-                android:text="&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;" />
+                style="@style/CheckboxBtnStyle"
+                android:text="@string/static_4_answer_1" />
+
             <CheckBox
-                style="@style/RadioBtnStyle"
-                android:text="&lt;style&gt;...&lt;/style&gt;" />
+                style="@style/CheckboxBtnStyle"
+                android:text="@string/static_4_answer_2" />
+
             <CheckBox
-                style="@style/RadioBtnStyle"
-                android:text="&lt;styling&gt;...&lt;/styling&gt;" />
+                style="@style/CheckboxBtnStyle"
+                android:text="@string/static_4_answer_3" />
         </LinearLayout>
 
         <TextView
             style="@style/TextViewStyle"
-            android:text="4. How would you make an application responsive ?" />
+            android:text="@string/static_5_question" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:background="#FFF"/>
+            style="@style/EditTextStyle"
+            android:hint="@string/static_5_placeholder" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="calculateScore"
-            android:text="Submit" />
+            android:text="@string/submit" />
     </LinearLayout>
-
 </ScrollView>

@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Quiz</string>
+
+    <string name="main_btn_1">Static Quiz</string>
+    <string name="main_btn_2">Dynamic Quiz</string>
+
+    <string name="static_1_question">1. What is the result of these CSS rules ?\n\twidth: 10rem;\n\theight: 10rem;\n\tbackground-color: #CFC;</string>
+    <string name="static_2_question">2. How can you add a comment in a JavaScript?</string>
+    <string name="static_2_answer_1">&lt;!&#8211;&#8211;This is a comment&#8211;&#8211;&gt;</string>
+    <string name="static_2_answer_2">\'This is a comment</string>
+    <string name="static_2_answer_3">//This is a comment</string>
+    <string name="static_3_question">3. What is the correct way to write a JavaScript array?</string>
+    <string name="static_3_answer_1">var colors = (1:\'red\', 2:\'green\', 3:\'blue\')</string>
+    <string name="static_3_answer_2">var colors = 1 = (\'red\'), 2 = (\'green\'), 3 = (\'blue\')</string>
+    <string name="static_3_answer_3">var colors = [\'red\', \'green\', \'blue\']</string>
+    <string name="static_4_question">4. How do you include CSS ?</string>
+    <string name="static_4_answer_1">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;</string>
+    <string name="static_4_answer_2">&lt;style&gt;&#8230;&lt;/style&gt;</string>
+    <string name="static_4_answer_3">&lt;styling&gt;&#8230;&lt;/styling&gt;</string>
+    <string name="static_5_question">5. How would you make an application responsive ?</string>
+    <string name="static_5_placeholder">I would ...</string>
+    <string name="submit">Submit</string>
 </resources>

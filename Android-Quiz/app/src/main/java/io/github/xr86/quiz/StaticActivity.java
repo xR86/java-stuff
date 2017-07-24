@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -50,14 +49,12 @@ public class StaticActivity extends AppCompatActivity {
             int idx1 = -2;
             List<Integer> idx2 = new ArrayList<Integer>();
 
-            int radioButtonID;
-
             if(tempView instanceof RadioGroup) {
                 flag = 0;
                 RadioGroup radioButtonGroup = (RadioGroup) tempView;
-                radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
+                int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
                 View radioButton = radioButtonGroup.findViewById(radioButtonID);
-                idx1 = radioButtonGroup.indexOfChild(radioButton); //in the json count starts from 1
+                idx1 = radioButtonGroup.indexOfChild(radioButton) + 1;
             } else if(tempView instanceof LinearLayout){
                 flag = 1;
                 LinearLayout viewGroup = (LinearLayout) tempView;
@@ -74,14 +71,12 @@ public class StaticActivity extends AppCompatActivity {
                 continue;
             }
 
-            //Log.v("DynamicActivity.java", "\tradioButtonID: " + radioButtonID);
-            //Log.v("DynamicActivity.java", "\tcorrectAnswers(qCount): " + correctAnswers.get(qCount));
-            if(flag == 0 && correctAnswers.get(qCount).get(0) - 1 == idx1){ //json response is offseted by +1 (user count)
+
+            if(flag == 0 && correctAnswers.get(qCount).get(0) == idx1){
                 correctCount++;
             } else if(isTwoArrayListsWithSameValues(correctAnswers.get(qCount), idx2)){
                 correctCount++;
             }
-
             qCount += 1;
         }
 
@@ -100,14 +95,12 @@ public class StaticActivity extends AppCompatActivity {
         if((list1 == null && list2 != null) || (list1 != null && list2 == null))
             return false;
 
-        if(list1.size()!=list2.size())
+        if(list1.size() != list2.size())
             return false;
-        for(Object itemList1: list1)
-        {
+        for(Object itemList1: list1){
             if(!list2.contains(itemList1))
                 return false;
         }
-
         return true;
     }
 }
