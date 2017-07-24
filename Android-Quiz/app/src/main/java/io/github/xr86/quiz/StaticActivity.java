@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -12,16 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StaticActivity extends AppCompatActivity {
-    List<Integer> correctAnswers = new ArrayList<Integer>();
+    List<List<Integer>> correctAnswers = new ArrayList<List<Integer>>(); // = new ArrayList<ArrayList<Integer>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_static);
 
-        correctAnswers.add(2);
-        correctAnswers.add(3);
-        correctAnswers.add(3);
+        //correctAnswers.add(new Integer[]{2});
+        correctAnswers.add(new ArrayList<Integer>(){{ add(2); }});
+        correctAnswers.add(new ArrayList<Integer>(){{ add(3); }});
+        correctAnswers.add(new ArrayList<Integer>(){{ add(3); }});
+        correctAnswers.add(new ArrayList<Integer>(){{ add(1); add(2); }});
     }
 
     /**
@@ -39,14 +44,41 @@ public class StaticActivity extends AppCompatActivity {
         for(int i = 1; i < viewContainer.getChildCount(); i += 2){
             Log.v("DynamicActivity.java", "Iteration: " + i);
             //Log.v("DynamicActivity.java", viewContainer.getChildAt(i).getClass().getName());
+            View tempView = viewContainer.getChildAt(i);
+            int flag = -2;
 
-            RadioGroup radioButtonGroup = (RadioGroup) viewContainer.getChildAt(i);
-            int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
-            View radioButton = radioButtonGroup.findViewById(radioButtonID);
-            int idx = radioButtonGroup.indexOfChild(radioButton); //in the json count starts from 1
+            int idx1 = -2;
+            List<Integer> idx2 = new ArrayList<Integer>();
 
+            int radioButtonID;
+
+            if(tempView instanceof RadioGroup) {
+                flag = 0;
+                RadioGroup radioButtonGroup = (RadioGroup) tempView;
+                radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
+                View radioButton = radioButtonGroup.findViewById(radioButtonID);
+                idx1 = radioButtonGroup.indexOfChild(radioButton); //in the json count starts from 1
+            } else if(tempView instanceof LinearLayout){
+                flag = 1;
+                LinearLayout viewGroup = (LinearLayout) tempView;
+                for(int j = 0; j < viewGroup.getChildCount(); j++){
+                    CheckBox chkBox = (CheckBox) viewGroup.getChildAt(j);
+                    if(chkBox.isChecked()){
+                        idx2.add(j+1);
+                    }
+                }
+            } else if(tempView instanceof EditText){
+                if(!((EditText) tempView).getText().toString().matches("")){
+                    correctCount++;
+                }
+                continue;
+            }
+
+            //Log.v("DynamicActivity.java", "\tradioButtonID: " + radioButtonID);
             //Log.v("DynamicActivity.java", "\tcorrectAnswers(qCount): " + correctAnswers.get(qCount));
-            if(correctAnswers.get(qCount) - 1 == idx){ //json response is offseted by +1 (user count)
+            if(flag == 0 && correctAnswers.get(qCount).get(0) - 1 == idx1){ //json response is offseted by +1 (user count)
+                correctCount++;
+            } else if(isTwoArrayListsWithSameValues(correctAnswers.get(qCount), idx2)){
                 correctCount++;
             }
 
@@ -58,5 +90,24 @@ public class StaticActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Too bad ! You answered correctly " + correctCount + " out of " + questionCount + " questions", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public boolean isTwoArrayListsWithSameValues(List<Integer> list1, List<Integer> list2)
+    {
+        //null checking
+        if(list1==null && list2==null)
+            return true;
+        if((list1 == null && list2 != null) || (list1 != null && list2 == null))
+            return false;
+
+        if(list1.size()!=list2.size())
+            return false;
+        for(Object itemList1: list1)
+        {
+            if(!list2.contains(itemList1))
+                return false;
+        }
+
+        return true;
     }
 }

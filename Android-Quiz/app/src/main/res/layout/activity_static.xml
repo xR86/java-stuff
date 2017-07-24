@@ -80,6 +80,36 @@
                 android:text="var colors = ['red', 'green', 'blue']" />
         </RadioGroup>
 
+        <TextView
+            style="@style/TextViewStyle"
+            android:text="4. How do you include CSS ?" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <CheckBox
+                style="@style/RadioBtnStyle"
+                android:text="&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;" />
+            <CheckBox
+                style="@style/RadioBtnStyle"
+                android:text="&lt;style&gt;...&lt;/style&gt;" />
+            <CheckBox
+                style="@style/RadioBtnStyle"
+                android:text="&lt;styling&gt;...&lt;/styling&gt;" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:text="4. How would you make an application responsive ?" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="#FFF"/>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
