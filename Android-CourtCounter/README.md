@@ -7,10 +7,7 @@ just java stuff ...
 Simple football counter.
 
 ### TODO
-+ display number for minute
 + `EditText` with autocomplete API for player name
-+ reset button for the scores
-+ fix `chronometer` (starts before `onClick`, doesn't stop ...)
 + update interface
 
 ### App features

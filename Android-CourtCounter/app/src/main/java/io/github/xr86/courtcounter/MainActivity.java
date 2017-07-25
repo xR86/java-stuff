@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
         teamAGoals = 0;
         teamBGoals = 0;
 
-        //set = (Button) findViewById(R.id.button4);
-
         mChronometer = (Chronometer) findViewById(R.id.chronometer1);
     }
 
@@ -58,20 +56,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void goalForTeamB(View view){
-        teamBGoals += 1;
-        TextView goals = (TextView) findViewById(R.id.team_b_score);
-        goals.setText(String.valueOf(teamBGoals));
+        if (isChronometerRunning) {
+            teamBGoals += 1;
+            TextView goals = (TextView) findViewById(R.id.team_b_score);
+            goals.setText(String.valueOf(teamBGoals));
+
+            ScrollView tempWrapper = (ScrollView) findViewById(R.id.goal_board_team_B_wrapper);
+            tempWrapper.measure(0, 0);
+            if (tempWrapper.getMeasuredHeight() > 400) {
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, 400);
+                tempWrapper.setLayoutParams(lp);
+            }
+
+            LinearLayout tempLayout = (LinearLayout) findViewById(R.id.goal_board_team_B);
+            TextView tempTextView = (TextView)getLayoutInflater().inflate(R.layout.template_minute, null);
+
+            String temp = "" + (SystemClock.elapsedRealtime() - mChronometer.getBase()) / 1000 / 60 + "'";//mChronometer.getText().toString();
+            tempTextView.setText(temp);
+
+            tempLayout.addView(tempTextView);
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(),"Please start the chronometer",Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     /*Timer functions*/
-    Chronometer mChronometer;
-    boolean isChronometerRunning = false;
-    long timeWhenStopped = 0;
-    Button start, stop, restart, set, clear;
-
-    protected void clear(View v){
-        mChronometer.setFormat(null);
-    }
+    private Chronometer mChronometer;
+    private boolean isChronometerRunning = false;
+    private long timeWhenStopped = 0;
+    private Button start, stop, restart, set, clear;
 
     protected void start(View v) {
         isChronometerRunning = true;
@@ -90,7 +105,32 @@ public class MainActivity extends AppCompatActivity {
         timeWhenStopped = 0;
     }
 
-    protected void set(View v) {
-        mChronometer.setFormat("Formated Time - %s");
+    protected void reset(View v){
+        stop(v);
+        restart(v);
+
+        //reset board for A
+        ScrollView tempWrapper = (ScrollView) findViewById(R.id.goal_board_team_A_wrapper);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        tempWrapper.setLayoutParams(lp);
+
+        LinearLayout tempLayout = (LinearLayout) findViewById(R.id.goal_board_team_A);
+        tempLayout.removeAllViews();
+
+        teamAGoals = 0;
+        TextView goals = (TextView) findViewById(R.id.team_a_score);
+        goals.setText(String.valueOf(teamAGoals));
+
+        //reset board for B
+        tempWrapper = (ScrollView) findViewById(R.id.goal_board_team_B_wrapper);
+        tempWrapper.setLayoutParams(lp);
+
+        tempLayout = (LinearLayout) findViewById(R.id.goal_board_team_B);
+        tempLayout.removeAllViews();
+
+        teamBGoals = 0;
+        goals = (TextView) findViewById(R.id.team_b_score);
+        goals.setText(String.valueOf(teamBGoals));
     }
 }

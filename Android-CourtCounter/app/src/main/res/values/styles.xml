@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
@@ -17,16 +16,8 @@
         <item name="android:gravity">center</item>
         <item name="android:padding">16dp</item>
 
-        <item name="android:textColor">#616161</item>
-        <item name="android:textSize">30sp</item>
-    </style>
-    <style name="GoalMinuteStyle" parent="AppTheme">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">4</item>
-        <item name="android:gravity">end</item>
-        <item name="android:paddingRight">10dp</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorTeamTextView</item>
+        <item name="android:textSize">@dimen/team_TextView_textSize</item>
     </style>
     <style name="GoalCounterStyle" parent="AppTheme">
         <item name="android:layout_width">match_parent</item>
@@ -34,8 +25,28 @@
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:gravity">center</item>
 
-        <item name="android:textColor">#000</item>
-        <item name="android:textSize">56sp</item>
+        <item name="android:textColor">@color/colorCounter</item>
+        <item name="android:textSize">@dimen/team_counter_textSize</item>
+    </style>
+    <style name="GoalBoardWrapperStyle" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">false</item>
+    </style>
+    <style name="GoalBoardStyle" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/colorGoalBoard</item>
+    </style>
+    <style name="GoalMinuteStyle" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:gravity">end</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">@dimen/goal_minute_textSize</item>
     </style>
     <style name="GoalButtonStyle" parent="AppTheme">
         <item name="android:layout_width">match_parent</item>

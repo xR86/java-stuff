@@ -38,28 +38,22 @@
                 android:text="0" />
 
             <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/goal_board_team_A_wrapper"
-                android:scrollbars="vertical"
-                android:fadeScrollbars="false">
-            <LinearLayout
-                android:background="#92767676"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/goal_board_team_A"
-                android:orientation="vertical">
-                <!--<TextView-->
-                    <!--style="@style/GoalMinuteStyle"-->
-                    <!--android:text="55'"-->
-                    <!--/>-->
-                <!--<EditText-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:background="#FFF"-->
-                    <!--android:hint="Player name"-->
-                    <!--android:layout_weight="1"/>-->
-            </LinearLayout>
+                style="@style/GoalBoardWrapperStyle">
+                <LinearLayout
+                    android:id="@+id/goal_board_team_A"
+                    style="@style/GoalBoardStyle">
+                    <!--<TextView-->
+                        <!--style="@style/GoalMinuteStyle"-->
+                        <!--android:text="55'"-->
+                        <!--/>-->
+                    <!--<EditText-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:background="#FFF"-->
+                        <!--android:hint="Player name"-->
+                        <!--android:layout_weight="1"/>-->
+                </LinearLayout>
             </ScrollView>
 
             <Button
@@ -76,7 +70,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -88,6 +82,15 @@
                 android:id="@+id/team_b_score"
                 style="@style/GoalCounterStyle"
                 android:text="0"/>
+
+            <ScrollView
+                android:id="@+id/goal_board_team_B_wrapper"
+                style="@style/GoalBoardWrapperStyle">
+                <LinearLayout
+                    android:id="@+id/goal_board_team_B"
+                    style="@style/GoalBoardStyle">
+                </LinearLayout>
+            </ScrollView>
 
             <Button
                 style="@style/GoalButtonStyle"
@@ -107,10 +110,20 @@
         android:layout_marginTop="50dp"
         android:text="Chronometer" />
 
+    <Button
+        android:id="@+id/reset_all"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Reset All"
+        android:onClick="reset" />
+
     <LinearLayout
+        android:layout_above="@id/reset_all"
+        android:id="@+id/chron_ctrl_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        >
 
         <Button
             style="@style/ChronometerButtonStyle"
@@ -127,26 +140,5 @@
             style="@style/ChronometerButtonStyle"
             android:text="Restart"
             android:onClick="restart" />
-
-        <!--<Button-->
-        <!--android:id="@+id/button4"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/button3"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:onClick="set"-->
-        <!--android:text="Set Format" />-->
-
-        <!--<Button-->
-        <!--android:id="@+id/button5"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/button4"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:onClick="clear"-->
-        <!--android:text="Clear Format" />-->
     </LinearLayout>
-
 </RelativeLayout>
