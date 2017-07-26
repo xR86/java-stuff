@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="LinearLayout"
+    tools:orientation="vertical">
+
+    <!-- TODO: addition - http://stackoverflow.com/a/19787125/6139015 -->
+    <TextView
+        style="@style/TextViewStyle"
+        android:text="@string/static_1_question" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            style="@style/ImgRadioBtnStyle"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/question_1_opt_1" />
+
+        <RadioButton
+            style="@style/ImgRadioBtnStyle"
+            android:drawableTop="@drawable/question_1_opt_2" />
+
+        <RadioButton
+            style="@style/ImgRadioBtnStyle"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/question_1_opt_3" />
+    </RadioGroup>
+</merge>

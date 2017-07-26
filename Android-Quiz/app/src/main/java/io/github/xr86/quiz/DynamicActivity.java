@@ -1,5 +1,6 @@
 package io.github.xr86.quiz;
 
+import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -23,15 +24,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import io.github.xr86.quiz.databinding.ActivityDynamicBinding;
 
 public class DynamicActivity extends AppCompatActivity {
     List<Integer> correctAnswers = new ArrayList<Integer>();
 
+    ActivityDynamicBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dynamic);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_dynamic);
 
         //TODO: do some sort of shorthand here to alter function parameters (without implementing a view factory, different views ...)
 //        RadioButton btn = new RadioButton(this);
@@ -96,7 +100,6 @@ public class DynamicActivity extends AppCompatActivity {
         Log.v("DynamicActivity.java", "RUN constructView()" );
         //Log.v("DynamicActivity.java", configJson.at("/questions").asText() );
 
-        LinearLayout viewContainer = (LinearLayout) findViewById(R.id.question_container);
         JsonNode questions = configJson.get("questions");
         //Log.v("DynamicActivity.java", questions.toString());
 
@@ -107,7 +110,7 @@ public class DynamicActivity extends AppCompatActivity {
 
             //set text
             questionTextView.setText(i + ". " + question.get("text").asText());
-            viewContainer.addView(questionTextView);
+            binding.questionContainer.addView(questionTextView);
 
             //set orientation
             RadioGroup optionsRadioGroup = new RadioGroup(this);
@@ -140,7 +143,7 @@ public class DynamicActivity extends AppCompatActivity {
                 optionRadioButton.setText(option.get("text").asText());
                 optionsRadioGroup.addView(optionRadioButton);
             }
-            viewContainer.addView(optionsRadioGroup);
+            binding.questionContainer.addView(optionsRadioGroup);
 
             //Log.v("DynamicActivity.java", "answer: " + question.get("answer").asText());
             correctAnswers.add(question.get("answer").asInt() - 1); //json answers starting from 1
@@ -156,7 +159,7 @@ public class DynamicActivity extends AppCompatActivity {
         });
         submitButton.setText("Submit");
 
-        viewContainer.addView(submitButton);
+        binding.questionContainer.addView(submitButton);
         Log.v("DynamicActivity.java", "END constructView()" );
     }
 
@@ -166,15 +169,13 @@ public class DynamicActivity extends AppCompatActivity {
      * @param v - View to be passed
      */
     public void calculateScore(View v){
-        LinearLayout viewContainer = (LinearLayout) findViewById(R.id.question_container);
-
         int correctCount = 0;
         int qCount = 0;
-        for(int i = 1; i < viewContainer.getChildCount(); i += 2){
+        for(int i = 1; i < binding.questionContainer.getChildCount(); i += 2){
             Log.v("DynamicActivity.java", "Iteration: " + i);
             //Log.v("DynamicActivity.java", viewContainer.getChildAt(i).getClass().getName());
 
-            RadioGroup radioButtonGroup = (RadioGroup) viewContainer.getChildAt(i);
+            RadioGroup radioButtonGroup = (RadioGroup) binding.questionContainer.getChildAt(i);
             int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
             View radioButton = radioButtonGroup.findViewById(radioButtonID);
             int idx = radioButtonGroup.indexOfChild(radioButton);

@@ -16,107 +16,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- TODO: addition - http://stackoverflow.com/a/19787125/6139015 -->
-        <TextView
-            style="@style/TextViewStyle"
-            android:text="@string/static_1_question" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                style="@style/ImgRadioBtnStyle"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/question_1_opt_1" />
-
-            <RadioButton
-                style="@style/ImgRadioBtnStyle"
-                android:drawableTop="@drawable/question_1_opt_2" />
-
-            <RadioButton
-                style="@style/ImgRadioBtnStyle"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/question_1_opt_3" />
-        </RadioGroup>
-
-        <TextView
-            style="@style/TextViewStyle"
-            android:text="@string/static_2_question" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RadioButton
-                style="@style/RadioBtnStyle"
-                android:text="@string/static_2_answer_1" />
-
-            <RadioButton
-                style="@style/RadioBtnStyle"
-                android:text="@string/static_2_answer_2" />
-
-            <RadioButton
-                style="@style/RadioBtnStyle"
-                android:text="@string/static_2_answer_3" />
-        </RadioGroup>
-
-        <TextView
-            style="@style/TextViewStyle"
-            android:text="@string/static_3_question" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RadioButton
-                style="@style/RadioBtnStyle"
-                android:text="@string/static_3_answer_1" />
-
-            <RadioButton
-                style="@style/RadioBtnStyle"
-                android:text="@string/static_3_answer_2" />
-
-            <RadioButton
-                style="@style/RadioBtnStyle"
-                android:text="@string/static_3_answer_3" />
-        </RadioGroup>
-
-        <TextView
-            style="@style/TextViewStyle"
-            android:text="@string/static_4_question" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <CheckBox
-                style="@style/CheckboxBtnStyle"
-                android:text="@string/static_4_answer_1" />
-
-            <CheckBox
-                style="@style/CheckboxBtnStyle"
-                android:text="@string/static_4_answer_2" />
-
-            <CheckBox
-                style="@style/CheckboxBtnStyle"
-                android:text="@string/static_4_answer_3" />
-        </LinearLayout>
-
-        <TextView
-            style="@style/TextViewStyle"
-            android:text="@string/static_5_question" />
-
-        <EditText
-            style="@style/EditTextStyle"
-            android:hint="@string/static_5_placeholder" />
-
+        <!-- TODO: https://stackoverflow.com/questions/4930398/can-the-android-layout-folder-contain-subfolders -->
+        <include layout="@layout/activity_static_question_1"/>
+        <include layout="@layout/activity_static_question_2"/>
+        <include layout="@layout/activity_static_question_3"/>
+        <include layout="@layout/activity_static_question_4"/>
+        <include layout="@layout/activity_static_question_5"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
